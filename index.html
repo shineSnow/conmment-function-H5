@@ -12,6 +12,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
     <meta content="email=no" name="format-detection"/>
+    <style>
+        body{
+            font-size: 16px;
+        }
+    </style>
 </head>
 <script>
     (function (doc, win) {
@@ -37,7 +42,20 @@
 <script src="./h5-comment-function.js"></script>
 <script>
 
-    console.log(we.getQueryStr("is_app"))
+    console.log(we)
+    console.log(we.dataType.isArr([]))
+    console.log(we.dataType.isObj({}))
+
+    console.log(we.app)
+    document.write(we.app)
+
+    we.setCookie("wish1","lucky","3650000d")
+
+    document.write(we.getCookie("wish1")+"<br/>")
+
+    setTimeout(we.delCookie("wish"),5000)
+
+    document.write(we.getQueryStr("_ijt"))
 
 
 </script>
