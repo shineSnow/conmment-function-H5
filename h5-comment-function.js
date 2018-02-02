@@ -94,6 +94,11 @@
         }
 
     }
+    
+    // 自定义判断元素类型JS
+    var toType = function (obj) {
+      return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    }
 
 
     window.we = {
@@ -102,7 +107,8 @@
         delCookie: delCookie,
         getQueryStr: getQueryStr,
         app: app,
-        dataType:dataType
+        dataType:dataType,
+        toType:toType
     }
 
 })(window, Zepto)
