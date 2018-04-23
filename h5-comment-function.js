@@ -51,7 +51,7 @@
             window.document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
     }
 
-    var getQueryStr = function (name) {
+    var getUrlParam = function (name) {
         var reg = new RegExp("(^|$)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
@@ -101,11 +101,11 @@
     }
 
 
-    window.we = {
+    window.Mmg = {
         setCookie: setCookie,
         getCookie: getCookie,
         delCookie: delCookie,
-        getQueryStr: getQueryStr,
+        getUrlParam: getUrlParam,
         app: app,
         dataType:dataType,
         toType:toType
