@@ -5,9 +5,9 @@
 (function (window, $, undefined) {
     /**
      * [setCookie 设置cookie]
-     * @param {[type]} name [名字]
-     * @param {[type]} value [值]
-     * @param {[type]} time [持续时间]
+     * @param {[str]} name [名字]
+     * @param {[str]} value [值]
+     * @param {[str]} time [持续时间]
      * d是天数，30天则：d30
      * setCookie("name","hayden","s20")
      */
@@ -19,7 +19,6 @@
     }
 
     var getsec = function (str) {
-        console.log(str);
         var len = str.length;
         var str1 = str.substring(1, len) * 1;
         var str2 = str.substring((len - 1), len);
@@ -33,7 +32,7 @@
     }
     /**
      * [getCookie 读取cookie]
-     * @param  {[type]} name [description]
+     * @param  {[str]} name [description]
      */
     var getCookie = function (name) {
         var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -100,15 +99,50 @@
       return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
     }
 
+    /**
+     * 倒计时函数
+     * detaStr [str]   '2018/08/08 00:00:00'
+     * cb() 回调函数
+     * */
+    var countZero = function (detaStr,cb) {
+        var obj = {}
+        var leftTime = (new Date(detaStr) - new Date())/1000;
+        var day = parseInt(leftTime/(60*60*24)); //计算剩余天数，以下依次
+        var hour = parseInt(leftTime/(60*60)%24);
+        var min = parseInt(leftTime/60%60);
+        var sec = parseInt(leftTime%60);
+        obj.day = day<10 ? ('0' + day) : day;
+        obj.hour = hour<10 ? ('0' + hour) : hour;
+        obj.min = min<10 ? ('0' + min) : min;
+        obj.sec = sec<10 ? ('0' + sec) : sec;
+        // console.log(obj)
+        if(cb) {cb(obj)}
+    }
+    /**
+     * 日期区间
+     * startTime str 开始时间
+     * endTime str 结束日期
+     * return  -1 未开始 0 已开始，未结束 1已结束
+     * */
+    var timeWhere = function (startTime,endTime) {
+        var start = new Date(startTime).getTime();
+        var now = new Date().getTime();
+        var end = new Date(endTime).getTime();
+        if(now < startTime) return -1
+        if(start < now < end) return 0
+        if(now < end) return 1
+    }
 
-    window.Mmg = {
+    window.mmg = {
         setCookie: setCookie,
         getCookie: getCookie,
         delCookie: delCookie,
         getUrlParam: getUrlParam,
         app: app,
         dataType:dataType,
-        toType:toType
+        toType:toType,
+        countZero:countZero,
+        timeWhere:timeWhere
     }
 
-})(window, Zepto)
+})(window, jQuery)

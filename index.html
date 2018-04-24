@@ -12,6 +12,7 @@
     <meta content="email=no" name="format-detection"/>
     <style>
         body{
+            position: relative;
             font-size: 16px;
         }
     </style>
@@ -35,19 +36,24 @@
 
 
 </body>
-<!-- <script src="https://ocafkzd89.qnssl.com/jquery2.0.js"></script> -->
-<script type="text/javascript" src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>-->
 <script src="./h5-comment-function.js"></script>
 <script>
 
-    console.log(we)
-    console.log(we.dataType.isArr([]))
-    console.log(we.dataType.isObj({}))
+    console.log(mmg)
+    console.log('数据类型检测：',mmg.toType('22'))
 
-    console.log(we.app)
-    document.write(we.app)
+    console.log('设备检测：',mmg.app)
+    console.log('获取连接参数：',mmg.getUrlParam('_ijt'))
 
-    we.setCookie("wish1","lucky","3650000d")
+    mmg.setCookie("wish1","lucky",'30s')
+    console.log('获取cookie',mmg.getCookie("wish1"))
+    setInterval("mmg.countZero('2018/08/28 00:00:00',f)",1000)
+    function f(obj) {
+        // console.log('obj',obj)
+    }
+
 
 
 
